@@ -64,4 +64,19 @@ def overview_student():
 botton_overview = tk.Button(root, text='Overview', command=overview_student)
 botton_overview.pack(pady=25)
 
+
+
+#  NEW: delete student
+def delete_student():
+    student_id = entry_id.get()
+
+    cursor.execute('DELETE FROM DB_student WHERE db_student_id = ?', (student_id,))
+    conn.commit()
+
+    print(f"Deleted record with Student ID: {student_id}")
+    print('-' * 30)
+
+#  NEW delete button
+button_delete = tk.Button(root, text='Delete', command=delete_student)
+button_delete.pack(pady=15)
 root.mainloop() #must be put to the end of programming code
